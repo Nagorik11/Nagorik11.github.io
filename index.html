@@ -1,668 +1,447 @@
-<!DOCTYPE html>
-<html lang="es" style="scroll-behavior: smooth;">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Cambia "Tu Nombre" por tu nombre real -->
-    <title>Tu Nombre | Desarrollador Web</title>
-    <!-- Añade una descripción para mejorar el SEO -->
-    <meta name="description" content="Portafolio de [Tu Nombre], un apasionado desarrollador web especializado en la creación de soluciones digitales modernas y funcionales.">
+/* Estilos generales y variables */
+:root {
+    --primary-color: #4CAF50;
+    --primary-color-dark: #388E3C;
+    --secondary-color: #333;
+    --light-color: #f4f4f4;
+    --text-color: #333;
+    --white-color: #fff;
+    --font-family: 'Poppins', sans-serif;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Títulos y botones */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white-color);
+    padding: 12px 35px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background: var(--primary-color-dark);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+}
+.btn-secondary:hover {
+    background: #555;
+}
+
+/* Header y navegación */
+header {
+    background: var(--secondary-color);
+    color: var(--white-color);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 35px;
+}
+
+.nav-links a {
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white-color);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Sección Hero */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white-color);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero .highlight {
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* Secciones Generales */
+section {
+    padding: 100px 0;
+}
+
+/* Sobre Mí */
+.about {
+    background: var(--white-color);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow);
+}
+
+.about-text {
+    flex: 1.5;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.about-text p {
+    margin-bottom: 15px;
+}
+
+/* Habilidades */
+.skills {
+    background: var(--light-color);
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.skill {
+    background: var(--white-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.skill i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.skill h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+/* Proyectos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--white-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+}
+
+.project-info {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    margin-bottom: 10px;
+}
+
+.project-tags {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background-color: #e0e0e0;
+    color: #555;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.project-links {
+    margin-top: auto;
+    display: flex;
+    gap: 15px;
+}
+
+/* Contacto */
+.contact {
+    background: var(--light-color);
+}
+
+.contact-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: -40px;
+    margin-bottom: 40px;
+}
+
+.contact-form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--white-color);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    background: var(--secondary-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 40px 0;
+}
+
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: var(--white-color);
+    margin: 0 15px;
+    font-size: 1.8rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Animaciones de Scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 70px; /* Altura del header */
+        right: 0;
+        width: 60%;
+        height: calc(100vh - 70px);
+        background: var(--secondary-color);
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out;
+        padding-top: 50px;
+    }
+
+    .nav-links.nav-active {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
     
-    <!-- Google Fonts para una tipografía más profesional -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    .section-title {
+        font-size: 2rem;
+    }
 
-    <style>
-        /* --- VARIABLES CSS: Cambia los colores aquí para modificar todo el sitio --- */
-        :root {
-            --primary-color: #007bff;  /* Azul vibrante como color principal */
-            --secondary-color: #6c757d;
-            --background-color: #f8f9fa;
-            --surface-color: #ffffff;
-            --text-color: #343a40;
-            --dark-color: #212529;
-            --light-color: #f8f9fa;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            --border-radius: 8px;
-        }
-        
-        /* --- ESTILOS GENERALES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.7;
-            color: var(--text-color);
-            background-color: var(--background-color);
-        }
-        
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--dark-color);
-            position: relative;
-        }
-        /* Línea decorativa debajo del título */
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-        
-        /* --- HEADER Y NAVEGACIÓN --- */
-        header {
-            background: var(--surface-color);
-            color: var(--text-color);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: box-shadow 0.3s ease, padding 0.3s ease;
-        }
-        
-        header.scrolled {
-            box-shadow: var(--shadow);
-            padding: 10px 0;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 35px;
-        }
-        
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 600;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Menú Hamburguesa para móvil */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .hamburger .bar {
-            width: 25px;
-            height: 3px;
-            background-color: var(--dark-color);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        /* --- SECCIÓN HERO --- */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1352&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            padding: 0 20px;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 12px 35px;
-            border: none;
-            border-radius: 50px; /* Botones más redondeados */
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-        }
-        
-        .btn:hover {
-            background: #0056b3;
-            transform: translateY(-3px);
-        }
-        
-        /* --- SECCIÓN SOBRE MÍ --- */
-        .about {
-            background: var(--surface-color);
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        
-        .about-text {
-            flex: 1.5;
-            min-width: 300px;
-        }
-        
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-        
-        .about-image img {
-            max-width: 300px;
-            width: 100%;
-            border-radius: 50%;
-            box-shadow: var(--shadow);
-            border: 5px solid var(--surface-color);
-        }
-        
-        /* --- SECCIÓN HABILIDADES --- */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 25px;
-            text-align: center;
-        }
-        
-        .skill {
-            background: var(--surface-color);
-            padding: 30px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skill:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-        }
-        
-        .skill i {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .skill:hover i {
-            transform: scale(1.1);
-        }
-
-        .skill h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-        
-        /* --- SECCIÓN PROYECTOS --- */
-        .projects {
-            background: var(--surface-color);
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        
-        .project-card {
-            background: var(--background-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-        }
-        
-        .project-image {
-            height: 220px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .project-info {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-info h3 {
-            margin-bottom: 10px;
-        }
-
-        .project-info p {
-            flex-grow: 1;
-            margin-bottom: 20px;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn-secondary {
-            background: var(--secondary-color);
-            box-shadow: 0 4px 10px rgba(108, 117, 125, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: #5a6268;
-        }
-        
-        /* --- SECCIÓN CONTACTO --- */
-        .contact-form {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--surface-color);
-            padding: 40px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        /* --- FOOTER --- */
-        footer {
-            background: var(--dark-color);
-            color: var(--light-color);
-            text-align: center;
-            padding: 40px 0;
-        }
-        
-        .social-links {
-            margin: 20px 0;
-        }
-        
-        .social-links a {
-            color: var(--light-color);
-            margin: 0 15px;
-            font-size: 1.8rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-        
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Empieza fuera de la pantalla */
-                width: 70%;
-                height: 100vh;
-                background: var(--surface-color);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.4s ease-in-out;
-            }
-
-            .nav-links.active {
-                right: 0; /* Se desliza hacia adentro */
-            }
-
-            .nav-links li {
-                margin: 25px 0;
-            }
-
-            .hamburger {
-                display: flex;
-                z-index: 1001; /* Debe estar por encima del menú */
-            }
-            
-            /* Animación de la hamburguesa a una 'X' */
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .about-content {
-                flex-direction: column-reverse; /* Imagen arriba, texto abajo */
-            }
-        }
-
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <nav>
-                <!-- CAMBIA AQUÍ TU LOGO/NOMBRE -->
-                <a href="#inicio" class="logo">TuNombre</a>
-                <ul class="nav-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#sobre-mi">Sobre Mí</a></li>
-                    <li><a href="#habilidades">Habilidades</a></li>
-                    <li><a href="#proyectos">Proyectos</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-                <div class="hamburger">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <!-- Sección Hero -->
-        <section id="inicio" class="hero">
-            <!-- CAMBIA AQUÍ TU NOMBRE Y DESCRIPCIÓN -->
-            <h1>Hola, soy <span style="color: var(--primary-color);">Tu Nombre</span></h1>
-            <p>Desarrollador Web apasionado por crear soluciones innovadoras y funcionales.</p>
-            <a href="#proyectos" class="btn">Ver mis proyectos</a>
-        </section>
-
-        <!-- Sección Sobre Mí -->
-        <section id="sobre-mi" class="about">
-            <div class="container">
-                <h2 class="section-title">Sobre Mí</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <!-- PERSONALIZA ESTE TEXTO -->
-                        <h3>Apasionado por la tecnología y la resolución creativa de problemas.</h3>
-                        <p>¡Hola! Soy un desarrollador web con experiencia en la creación de sitios y aplicaciones. Me encanta transformar ideas en experiencias digitales atractivas y funcionales. Mi viaje en el desarrollo comenzó hace X años y desde entonces he trabajado con diversas tecnologías del ecosistema JavaScript.</p>
-                        <p>Siempre estoy aprendiendo y buscando nuevos desafíos para mejorar mis habilidades. Cuando no estoy programando, me encontrarás [tus hobbies, ej: explorando rutas de senderismo, leyendo ciencia ficción o experimentando en la cocina].</p>
-                    </div>
-                    <div class="about-image">
-                        <!-- CAMBIA LA IMAGEN POR UNA TUYA -->
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Foto de perfil de Tu Nombre">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección Habilidades -->
-        <section id="habilidades" class="skills">
-            <div class="container">
-                <h2 class="section-title">Mis Habilidades</h2>
-                <div class="skills-container">
-                    <!-- AÑADE O QUITA HABILIDADES SEGÚN TU PERFIL -->
-                    <div class="skill">
-                        <i class="fab fa-html5"></i>
-                        <h3>HTML5</h3>
-                    </div>
-                    <div class="skill">
-                        <i class="fab fa-css3-alt"></i>
-                        <h3>CSS3</h3>
-                    </div>
-                    <div class="skill">
-                        <i class="fab fa-js"></i>
-                        <h3>JavaScript</h3>
-                    </div>
-                    <div class="skill">
-                        <i class="fab fa-react"></i>
-                        <h3>React</h3>
-                    </div>
-                    <div class="skill">
-                        <i class="fab fa-node-js"></i>
-                        <h3>Node.js</h3>
-                    </div>
-                    <div class="skill">
-                        <i class="fab fa-git-alt"></i>
-                        <h3>Git</h3>
-                    </div>
-                    <div class="skill">
-                        <i class="fab fa-sass"></i>
-                        <h3>Sass</h3>
-                    </div>
-                    <div class="skill">
-                        <i class="fas fa-database"></i>
-                        <h3>SQL</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección Proyectos -->
-        <section id="proyectos" class="projects">
-            <div class="container">
-                <h2 class="section-title">Mis Proyectos</h2>
-                <div class="projects-grid">
-                    <!-- EJEMPLO DE PROYECTO 1 - PERSONALIZA -->
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=500&q=80');"></div>
-                        <div class="project-info">
-                            <h3>Plataforma E-commerce</h3>
-                            <p>Tienda online completa desarrollada con React y Node.js, integrando pasarela de pagos Stripe y un panel de administración para gestionar productos.</p>
-                            <div class="project-links">
-                                <a href="#" class="btn" target="_blank" rel="noopener noreferrer">Ver Demo</a>
-                                <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Código</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- EJEMPLO DE PROYECTO 2 - PERSONALIZA -->
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=500&q=80');"></div>
-                        <div class="project-info">
-                            <h3>Gestor de Tareas</h3>
-                            <p>Aplicación para gestionar tareas (To-Do List) con funciones de creación, edición y eliminación, utilizando almacenamiento local para persistir los datos.</p>
-                            <div class="project-links">
-                                <a href="#" class="btn" target="_blank" rel="noopener noreferrer">Ver Demo</a>
-                                <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Código</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- EJEMPLO DE PROYECTO 3 - PERSONALIZA -->
-                    <div class="project-card">
-                        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80');"></div>
-                        <div class="project-info">
-                            <h3>App del Clima</h3>
-                            <p>Aplicación que muestra el pronóstico del tiempo en tiempo real de cualquier ciudad, consumiendo datos de una API externa (OpenWeatherMap).</p>
-                            <div class="project-links">
-                                <a href="#" class="btn" target="_blank" rel="noopener noreferrer">Ver Demo</a>
-                                <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Código</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección Contacto -->
-        <section id="contacto" class="contact">
-            <div class="container">
-                <h2 class="section-title">Hablemos</h2>
-                <div class="contact-form">
-                    <!-- Reemplaza "tu-email@dominio.com" con tu correo electrónico -->
-                    <form action="mailto:tu-email@dominio.com" method="post" enctype="text/plain">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" name="message" placeholder="¿En qué puedo ayudarte?" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Enviar Mensaje</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <!-- AÑADE TUS ENLACES REALES -->
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
-            <!-- CAMBIA EL AÑO Y TU NOMBRE -->
-            <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <script>
-        // --- EFECTO DE SCROLL EN EL HEADER ---
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // --- LÓGICA DEL MENÚ HAMBURGUESA ---
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const links = document.querySelectorAll('.nav-links li');
-
-        hamburger.addEventListener('click', () => {
-            // Animación de la hamburguesa
-            hamburger.classList.toggle('active');
-            // Abrir/Cerrar menú
-            navLinks.classList.toggle('active');
-        });
-
-        // Cierra el menú al hacer clic en un enlace (para móviles)
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
-</body>
-</html>
+    section {
+        padding: 80px 0;
+    }
+}
