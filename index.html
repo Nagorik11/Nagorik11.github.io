@@ -181,7 +181,97 @@
         }
         
         .tech-item:hover { background-color: var(--accent); color: var(--primary); }
-        
+        /* === PROJECTS SECTION === */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background: var(--secondary);
+    border-radius: 8px;
+    padding: 30px;
+    border: 1px solid transparent; /* Borde invisible para mantener tamaño en hover */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+}
+
+.project-top {
+    margin-bottom: 25px;
+}
+
+.project-category {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Esto empuja los links al fondo */
+}
+
+.project-info h3 {
+    color: var(--lightest);
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    line-height: 1.3;
+}
+
+.project-info p {
+    color: var(--gray);
+    margin-bottom: 25px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto; /* Empuja las etiquetas hacia abajo si la descripción es corta */
+    margin-bottom: 25px;
+}
+
+.project-tag {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+}
+
+.project-links {
+    display: flex;
+    gap: 25px;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--light);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.project-link:hover {
+    color: var(--accent);
+}
+
+.project-link i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
         /* === CERTIFICATIONS SECTION === */
         .certifications { background-color: var(--secondary); }
         .certs-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px; }
@@ -392,73 +482,88 @@
             </div>
         </section>
         
-        <!-- Projects Section (el HTML de esta sección sigue igual, solo se beneficia del nuevo CSS) -->
-         <section id="proyectos" class="section projects">
-            <div class="container">
-                <h2 class="section-title">Proyectos Destacados</h2>
-                <div class="projects-grid">
-                    <article class="project-card fade-in">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1593435713522-83863414936e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Análisis de Tráfico de Red">
-                        </div>
-                        <div class="project-info">
-                            <h3>Analizador Automatizado de Tráfico de Red</h3>
-                            <p>
-                                Herramienta en Python para analizar capturas PCAP. Extrae estadísticas de protocolos, conversaciones, consultas DNS y dominios TLS/SNI, generando reportes visuales para identificar patrones y anomalías.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">Scapy</span>
-                                <span class="project-tag">Pandas</span>
-                                <span class="project-tag">Análisis de Red</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
-                                <a href="https://github.com/tu-usuario/tu-repositorio" class="project-link"><i class="fab fa-github"></i> Código Fuente</a>
-                            </div>
-                        </div>
-                    </article>
-                     <article class="project-card fade-in">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Análisis de comportamiento de red">
-                        </div>
-                        <div class="project-info">
-                            <h3>Detección de Amenazas con Threat Hunting</h3>
-                            <p>Proyecto de threat hunting proactivo basado en la correlación de eventos de red y el análisis de flujos de datos para la detección temprana de anomalías y actividad maliciosa.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Threat Hunting</span>
-                                <span class="project-tag">Linux</span>
-                                <span class="project-tag">Shell Scripting</span>
-                                <span class="project-tag">SIEM</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Proyecto</a>
-                                <a href="https://github.com/Nagorik11/Comprehensive_Security_Auditing_Tool" class="project-link"><i class="fab fa-github"></i> Código</a>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="project-card fade-in">
-                        <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1614064548237-02f0f3554612?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Monitoreo en tiempo real">
-                        </div>
-                        <div class="project-info">
-                            <h3>Despliegue Automatizado de Wazuh</h3>
-                            <p>Script de automatización para el despliegue rápido y configuración de un entorno de monitoreo de seguridad completo con el SIEM Wazuh, incluyendo servidor y agentes.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">SIEM</span>
-                                <span class="project-tag">Wazuh</span>
-                                <span class="project-tag">Automatización</span>
-                                <span class="project-tag">Bash</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Proyecto</a>
-                                <a href="https://github.com/Nagorik11/wazuh-script/blob/main/installer.sh" class="project-link"><i class="fab fa-github"></i> Código</a>
-                            </div>
-                        </div>
-                    </article>
+         
+<!-- Projects Section -->
+<section id="proyectos" class="section projects">
+    <div class="container">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-grid">
+
+            <!-- Proyecto 1 -->
+            <article class="project-card fade-in">
+                <div class="project-top">
+                    <span class="project-category">Análisis de Tráfico de Red</span>
                 </div>
-            </div>
-        </section>
+                <div class="project-info">
+                    <h3>Analizador<br>Automatizado de<br>Tráfico de Red</h3>
+                    <p>
+                        Herramienta en Python para analizar capturas PCAP. Extrae estadísticas de protocolos, conversaciones, consultas DNS y dominios TLS/SNI, generando reportes visuales para identificar patrones y anomalías.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Scapy</span>
+                        <span class="project-tag">Pandas</span>
+                        <span class="project-tag">Análisis de Red</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                        <a href="https://github.com/tu-usuario/tu-repositorio" class="project-link"><i class="fab fa-github"></i> Código Fuente</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Proyecto 2 -->
+            <article class="project-card fade-in">
+                <div class="project-top">
+                    <span class="project-category">Análisis de comportamiento de red</span>
+                </div>
+                <div class="project-info">
+                    <h3>Detección de Amenazas<br>con Threat Hunting</h3>
+                    <p>
+                        Proyecto de threat hunting proactivo basado en la correlación de eventos de red y el análisis de flujos de datos para la detección temprana de anomalías y actividad maliciosa.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Threat Hunting</span>
+                        <span class="project-tag">Linux</span>
+                        <span class="project-tag">Shell Scripting</span>
+                        <span class="project-tag">SIEM</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Proyecto</a>
+                        <a href="https://github.com/Nagorik11/Comprehensive_Security_Auditing_Tool" class="project-link"><i class="fab fa-github"></i> Código</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Proyecto 3 -->
+            <article class="project-card fade-in">
+                <div class="project-top">
+                    <span class="project-category">Monitoreo en tiempo real</span>
+                </div>
+                <div class="project-info">
+                    <h3>Despliegue<br>Automatizado de Wazuh</h3>
+                    <p>
+                        Script de automatización para el despliegue rápido y configuración de un entorno de monitoreo de seguridad completo con el SIEM Wazuh, incluyendo servidor y agentes.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">SIEM</span>
+                        <span class="project-tag">Wazuh</span>
+                        <span class="project-tag">Automatización</span>
+                        <span class="project-tag">Bash</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Proyecto</a>
+                        <a href="https://github.com/Nagorik11/wazuh-script/blob/main/installer.sh" class="project-link"><i class="fab fa-github"></i> Código</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+  
+
 
         <!-- Contact Section -->
         <section id="contacto" class="section contact">
