@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* === VARIABLES CSS === */
         :root {
             --primary: #0d3b66;
             --secondary: #1e6ea7;
@@ -22,6 +23,7 @@
             --light-gray: #ccd6f6;
         }
         
+        /* === RESET Y ESTILOS BASE === */
         * {
             margin: 0;
             padding: 0;
@@ -40,6 +42,17 @@
             font-family: 'Roboto Mono', monospace;
             color: var(--light);
             margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
         
         .container {
@@ -71,7 +84,64 @@
             background: var(--accent);
         }
         
-        /* Header & Navigation */
+        /* === COMPONENTES REUTILIZABLES === */
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--light);
+            padding: 12px 28px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--light);
+        }
+        
+        .card {
+            background: var(--darker);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* === HEADER & NAVIGATION === */
         header {
             position: fixed;
             top: 0;
@@ -152,7 +222,7 @@
             cursor: pointer;
         }
         
-        /* Hero Section */
+        /* === HERO SECTION === */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -202,40 +272,7 @@
             color: var(--gray);
         }
         
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--light);
-            padding: 12px 28px;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s;
-            cursor: pointer;
-            font-family: 'Roboto Mono', monospace;
-        }
-        
-        .btn:hover {
-            background: var(--accent-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            margin-left: 15px;
-        }
-        
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--light);
-        }
-        
-        /* About Section */
+        /* === ABOUT SECTION === */
         .about {
             background-color: var(--darker);
         }
@@ -280,7 +317,7 @@
             z-index: -1;
         }
         
-        /* Skills Section */
+        /* === SKILLS SECTION === */
         .skills {
             background-color: var(--dark);
         }
@@ -355,7 +392,7 @@
             transition: width 1s ease-in-out;
         }
         
-        /* Certifications */
+        /* === CERTIFICATIONS SECTION === */
         .certifications {
             background-color: var(--darker);
             text-align: center;
@@ -400,7 +437,7 @@
             font-size: 0.9rem;
         }
         
-        /* Projects Section */
+        /* === PROJECTS SECTION === */
         .projects {
             background-color: var(--dark);
         }
@@ -435,6 +472,12 @@
             font-size: 2.5rem;
             position: relative;
             overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .project-image::before {
@@ -505,7 +548,7 @@
             margin-right: 5px;
         }
         
-        /* Contact Section */
+        /* === CONTACT SECTION === */
         .contact {
             background-color: var(--darker);
         }
@@ -588,7 +631,7 @@
             resize: vertical;
         }
         
-        /* Footer */
+        /* === FOOTER === */
         footer {
             background: var(--darker);
             padding: 50px 0 20px;
@@ -627,17 +670,7 @@
             font-family: 'Roboto Mono', monospace;
         }
         
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
-        }
-        
-        /* Responsive Design */
+        /* === RESPONSIVE DESIGN === */
         @media (max-width: 992px) {
             .about-content,
             .contact-container {
@@ -702,6 +735,16 @@
             .section-title {
                 font-size: 2rem;
             }
+            
+            .certs-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cert-card {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -726,347 +769,339 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <p class="hero-subtitle">Especialista en Ciberseguridad</p>
-                <h1 class="hero-title">Protegiendo Infraestructuras <span>Críticas</span> contra Amenazas Digitales</h1>
-                <p class="hero-description">Soy un profesional especializado en redes y ciberseguridad con experiencia en proteger sistemas empresariales contra vulnerabilidades y ataques cibernéticos.</p>
-                <div>
-                    <a href="#proyectos" class="btn">Ver Proyectos</a>
-                    <a href="#contacto" class="btn btn-outline">Contactar</a>
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <p class="hero-subtitle">Especialista en Ciberseguridad</p>
+                    <h1 class="hero-title">Protegiendo Infraestructuras <span>Críticas</span> contra Amenazas Digitales</h1>
+                    <p class="hero-description">Soy un profesional especializado en redes y ciberseguridad con experiencia en proteger sistemas empresariales contra vulnerabilidades y ataques cibernéticos.</p>
+                    <div class="hero-actions">
+                        <a href="#proyectos" class="btn">Ver Proyectos</a>
+                        <a href="#contacto" class="btn btn-outline">Contactar</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="sobre-mi" class="section about">
-        <div class="container">
-            <h2 class="section-title">Sobre Mí</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Profesional en Seguridad de Redes</h3>
-                    <p>Soy Fernando David Valenzuela Espinosa, Ingeniero en Computación e Informática, con especial interés en ciberseguridad, análisis de vulnerabilidades y redes corporativas. Me apasiona el diseño de infraestructuras seguras y la implementación de buenas prácticas para proteger sistemas de información.</p>
-                    <p>Mi expertise incluye la implementación de firewalls, sistemas de detección de intrusos, análisis de vulnerabilidades y respuesta a incidentes de seguridad.</p>
-                    <p>Mi objetivo es desarrollar soluciones de seguridad robustas que protejan los activos digitales contra las amenazas emergentes.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1563013546-7e5c053c14c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Especialista en ciberseguridad">
+        <!-- About Section -->
+        <section id="sobre-mi" class="section about">
+            <div class="container">
+                <h2 class="section-title">Sobre Mí</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Profesional en Seguridad de Redes</h3>
+                        <p>Soy Fernando David Valenzuela Espinosa, Ingeniero en Computación e Informática, con especial interés en ciberseguridad, análisis de vulnerabilidades y redes corporativas. Me apasiona el diseño de infraestructuras seguras y la implementación de buenas prácticas para proteger sistemas de información.</p>
+                        <p>Mi expertise incluye la implementación de firewalls, sistemas de detección de intrusos, análisis de vulnerabilidades y respuesta a incidentes de seguridad.</p>
+                        <p>Mi objetivo es desarrollar soluciones de seguridad robustas que protejan los activos digitales contra las amenazas emergentes.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1563013546-7e5c053c14c2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="Especialista en ciberseguridad">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="habilidades" class="section skills">
-        <div class="container">
-            <h2 class="section-title">Mis Habilidades</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3><i class="fas fa-network-wired"></i> Redes</h3>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">TCP/IP</span>
-                                <span class="skill-percentage">95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="95%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">Cisco IOS</span>
-                                <span class="skill-percentage">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">VPNs</span>
-                                <span class="skill-percentage">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">DNS & DHCP</span>
-                                <span class="skill-percentage">88%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="88%"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-shield-alt"></i> Ciberseguridad</h3>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">Firewalls</span>
-                                <span class="skill-percentage">92%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="92%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">Pentesting</span>
-                                <span class="skill-percentage">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">IDS/IPS</span>
-                                <span class="skill-percentage">87%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="87%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">SIEM</span>
-                                <span class="skill-percentage">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="80%"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Herramientas</h3>
-                    <ul class="skill-list">
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">Wireshark</span>
-                                <span class="skill-percentage">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">Nmap</span>
-                                <span class="skill-percentage">88%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="88%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">Metasploit</span>
-                                <span class="skill-percentage">75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="75%"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-info">
-                                <span class="skill-name">Nessus</span>
-                                <span class="skill-percentage">82%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="82%"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certificaciones" class="section certifications">
-        <div class="container">
-            <h2 class="section-title">Certificaciones</h2>
-            <div class="certs-container">
-                <div class="cert-card fade-in">
-                    <div class="cert-icon">
-                        <i class="fab fa-microsoft"></i>
+        <!-- Skills Section -->
+        <section id="habilidades" class="section skills">
+            <div class="container">
+                <h2 class="section-title">Mis Habilidades</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-network-wired"></i> Redes</h3>
+                        <ul class="skill-list">
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">TCP/IP</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">Cisco IOS</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">VPNs</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">DNS & DHCP</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%"></div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <h3 class="cert-title">CCNA</h3>
-                    <p class="cert-org">Cisco Certified Network Associate</p>
-                </div>
-                
-                <div class="cert-card fade-in">
-                    <div class="cert-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3 class="cert-title">Security+</h3>
-                    <p class="cert-org">CompTIA</p>
-                </div>
-                
-                <div class="cert-card fade-in">
-                    <div class="cert-icon">
-                        <i class="fas fa-user-secret"></i>
-                    </div>
-                    <h3 class="cert-title">CEH</h3>
-                    <p class="cert-org">Certified Ethical Hacker</p>
-                </div>
-                
-                <div class="cert-card fade-in">
-                    <div class="cert-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 class="cert-title">CISSP</h3>
-                    <p class="cert-org">ISC²</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="proyectos" class="section projects">
-        <div class="container">
-            <h2 class="section-title">Proyectos Destacados</h2>
-            <div class="projects-grid">
-                <div class="project-card fade-in">
                     
-                   <!-- Empieza la tarjeta del proyecto -->
-                <div class="project-card">
-                    <!-- Puedes añadir una imagen representativa aquí si quieres -->
-                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFncO7m4-WEiC6AD_LJMs93-ATy3bumMyXew&s" alt="Análisis de Tráfico de Red" class="project-image">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-shield-alt"></i> Ciberseguridad</h3>
+                        <ul class="skill-list">
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">Firewalls</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">Pentesting</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">IDS/IPS</span>
+                                    <span class="skill-percentage">87%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="87%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">SIEM</span>
+                                    <span class="skill-percentage">80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                     
-                    <div class="project-info">
-                        <h3>Analizador Automatizado de Tráfico de Red</h3>
-                        <p>
-                            Herramienta desarrollada en Python para automatizar el análisis de capturas de red (PCAP). 
-                            Extrae estadísticas clave como distribución de protocolos, principales conversaciones, 
-                            consultas DNS y dominios visitados (TLS/SNI), generando reportes visuales para agilizar la 
-                            identificación de patrones y anomalías.
-                        </p>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Scapy</span>
-                            <span class="project-tag">Pandas</span>
-                            <span class="project-tag">Análisis de Red</span>
-                            <span class="project-tag">Wireshark</span>
-                            <span class="project-tag">Automatización</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
-                            <a href="https://github.com/tu-usuario/tu-repositorio" class="project-link"><i class="fab fa-github"></i> Código Fuente</a>
-                        </div>
-                    </div>
-                </div>
-                   
-    
-                <div class="project-card fade-in">
-                    <!-- El div contenedor mantiene su clase original para los estilos -->
-                    <div class="project-image">
-                        <!-- Usamos la etiqueta <img> con la URL en el atributo 'src' -->
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdb62mKUaDWi0qtWG-mSpQJGkYidvzR0FSbB2O069vz35Pmeb4QonW5vZgLNF4ofS3pJs&usqp=CAU" alt="Análisis de comportamiento de red">
-                    </div>
-                    <div class="project-info">
-                        <h3>Detección de Amenazas mediante Análisis de Comportamiento</h3>
-                        <p>Proyecto de threat hunting proactivo basado en la correlación de eventos de red y el análisis de flujos de datos para la detección temprana de anomalías y actividad maliciosa.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Threat Hunting</span>
-                            <span class="project-tag">Linux</span>
-                            <span class="project-tag">Shell</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Proyecto</a>
-                            <a href="https://github.com/Nagorik11/Comprehensive_Security_Auditing_Tool" class="><i class="fab fa-github"></i> Código</a>
-                        </div>
-                    </div>
-                </div>
-
-  
-
-  
-                
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1vm1qOWtc3dnTo30RDsmD_5uA6-_bl6BDJ51rf6gIPFS46wrFCajOjR5nScEY5jjTIuY&usqp=CAU">
-                    </div>
-                    <div class="project-info">
-                        <h3>Monitoreo en tiempo real</h3>
-                        <p>Implementación de servidor y agentes WAZUH.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">SIEM</span>
-                            <span class="project-tag">WAZUH</span>
-                            <span class="project-tag">Detección de amenazas</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Proyecto</a>
-                            <a href="https://github.com/Nagorik11/wazuh-script/blob/main/installer.sh" class="project-link"><i class="fab fa-github"></i> Código</a>
-                        </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Herramientas</h3>
+                        <ul class="skill-list">
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">Wireshark</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">Nmap</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">Metasploit</span>
+                                    <span class="skill-percentage">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75%"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill-info">
+                                    <span class="skill-name">Nessus</span>
+                                    <span class="skill-percentage">82%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="82%"></div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contacto" class="section contact">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Ponte en contacto</h3>
-                    <ul class="contact-details">
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:email@ejemplo.com">email@ejemplo.com</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+34123456789">+34 123 456 789</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Madrid, España</span>
-                        </li>
-                        <li>
-                            <i class="fab fa-linkedin"></i>
-                            <a href="#">linkedin.com/in/tuperfil</a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" required>
+        <!-- Certifications Section -->
+        <section id="certificaciones" class="section certifications">
+            <div class="container">
+                <h2 class="section-title">Certificaciones</h2>
+                <div class="certs-container">
+                    <div class="cert-card fade-in">
+                        <div class="cert-icon">
+                            <i class="fab fa-microsoft"></i>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
+                        <h3 class="cert-title">CCNA</h3>
+                        <p class="cert-org">Cisco Certified Network Associate</p>
+                    </div>
+                    
+                    <div class="cert-card fade-in">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Asunto</label>
-                            <input type="text" id="subject" required>
+                        <h3 class="cert-title">Security+</h3>
+                        <p class="cert-org">CompTIA</p>
+                    </div>
+                    
+                    <div class="cert-card fade-in">
+                        <div class="cert-icon">
+                            <i class="fas fa-user-secret"></i>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" required></textarea>
+                        <h3 class="cert-title">CEH</h3>
+                        <p class="cert-org">Certified Ethical Hacker</p>
+                    </div>
+                    
+                    <div class="cert-card fade-in">
+                        <div class="cert-icon">
+                            <i class="fas fa-network-wired"></i>
                         </div>
-                        <button type="submit" class="btn">Enviar Mensaje</button>
-                    </form>
+                        <h3 class="cert-title">CISSP</h3>
+                        <p class="cert-org">ISC²</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="proyectos" class="section projects">
+            <div class="container">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <div class="projects-grid">
+                    <article class="project-card fade-in">
+                        <div class="project-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFncO7m4-WEiC6AD_LJMs93-ATy3bumMyXew&s" alt="Análisis de Tráfico de Red">
+                        </div>
+                        <div class="project-info">
+                            <h3>Analizador Automatizado de Tráfico de Red</h3>
+                            <p>
+                                Herramienta desarrollada en Python para automatizar el análisis de capturas de red (PCAP). 
+                                Extrae estadísticas clave como distribución de protocolos, principales conversaciones, 
+                                consultas DNS y dominios visitados (TLS/SNI), generando reportes visuales para agilizar la 
+                                identificación de patrones y anomalías.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Scapy</span>
+                                <span class="project-tag">Pandas</span>
+                                <span class="project-tag">Análisis de Red</span>
+                                <span class="project-tag">Wireshark</span>
+                                <span class="project-tag">Automatización</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Demo</a>
+                                <a href="https://github.com/tu-usuario/tu-repositorio" class="project-link"><i class="fab fa-github"></i> Código Fuente</a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card fade-in">
+                        <div class="project-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdb62mKUaDWi0qtWG-mSpQJGkYidvzR0FSbB2O069vz35Pmeb4QonW5vZgLNF4ofS3pJs&usqp=CAU" alt="Análisis de comportamiento de red">
+                        </div>
+                        <div class="project-info">
+                            <h3>Detección de Amenazas mediante Análisis de Comportamiento</h3>
+                            <p>Proyecto de threat hunting proactivo basado en la correlación de eventos de red y el análisis de flujos de datos para la detección temprana de anomalías y actividad maliciosa.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Threat Hunting</span>
+                                <span class="project-tag">Linux</span>
+                                <span class="project-tag">Shell</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Proyecto</a>
+                                <a href="https://github.com/Nagorik11/Comprehensive_Security_Auditing_Tool" class="project-link"><i class="fab fa-github"></i> Código</a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card fade-in">
+                        <div class="project-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1vm1qOWtc3dnTo30RDsmD_5uA6-_bl6BDJ51rf6gIPFS46wrFCajOjR5nScEY5jjTIuY&usqp=CAU" alt="Monitoreo en tiempo real">
+                        </div>
+                        <div class="project-info">
+                            <h3>Monitoreo en tiempo real</h3>
+                            <p>Implementación de servidor y agentes WAZUH.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">SIEM</span>
+                                <span class="project-tag">WAZUH</span>
+                                <span class="project-tag">Detección de amenazas</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Ver Proyecto</a>
+                                <a href="https://github.com/Nagorik11/wazuh-script/blob/main/installer.sh" class="project-link"><i class="fab fa-github"></i> Código</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="section contact">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Ponte en contacto</h3>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:email@ejemplo.com">email@ejemplo.com</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+34123456789">+34 123 456 789</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Madrid, España</span>
+                            </li>
+                            <li>
+                                <i class="fab fa-linkedin"></i>
+                                <a href="#">linkedin.com/in/tuperfil</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Asunto</label>
+                                <input type="text" id="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensaje</label>
+                                <textarea id="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -1170,8 +1205,7 @@
             
             fadeElements.forEach(element => {
                 if (isElementInViewport(element)) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
+                    element.classList.add('visible');
                 }
             });
         }
