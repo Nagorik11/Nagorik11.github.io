@@ -32,64 +32,250 @@
       font-size: 1.1rem;
     }
 
-    /* Carousel styles */
-    .carousel {
-      max-width: 900px;
-      margin: 1.5rem auto;
-      position: relative;
-      background: #0b0f13;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-    }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.6s ease;
-      will-change: transform;
-    }
-    .carousel-slide {
-      min-width: 100%;
-      box-sizing: border-box;
-    }
-    .carousel-slide img {
-      display: block;
-      width: 100%;
-      height: 420px;
-      object-fit: contain;
-      background-color: #0d1117;
-    }
-    .carousel-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(33,38,45,0.7);
-      border: none;
-      color: #e6edf3;
-      padding: 0.8rem 0.9rem;
-      border-radius: 8px;
-      cursor: pointer;
-      backdrop-filter: blur(4px);
-    }
-    .carousel-button:hover { background: rgba(48,54,61,0.9); }
-    .carousel-button.prev { left: 12px; }
-    .carousel-button.next { right: 12px; }
-    .carousel-dots {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 12px;
-      display: flex;
-      gap: 8px;
-    }
-    .carousel-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.06);
-      cursor: pointer;
-    }
-    .carousel-dot.active { background: #58a6ff; }
+    :root {
+	--background-color: #000;
+	--text-color: #fff;
+
+	--tv-background: #777;
+	--tv-border: 0.2rem outset #555;
+
+	--btn-background: #e11;
+	--btn-hover-background: #f56;
+	--btn-border: 1px solid #a00;
+	--btn-shadow: 1px 1px 4px 2px #0003;
+	--btn-active-inset: inset 0 0 5px 2px #0004;
+}
+
+/* All-purpose Sliders */
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+}
+
+body {
+	margin: 0;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	font-family: "Roboto Condensed", Arial, sans-serif;
+}
+
+h1 {
+	font-size: 1.5rem;
+}
+
+button {
+	padding: 0.5rem;
+	background-color: var(--btn-background);
+	border: none;
+	color: #fff;
+	border-radius: 3px;
+	box-shadow: var(--btn-shadow);
+	text-align: center;
+	font-size: 1rem;
+	font-family: inherit;
+	cursor: pointer;
+}
+button:hover {
+	background-color: var(--btn-hover-background);
+}
+button:active {
+	background-color: var(--btn-background);
+	box-shadow: var(--btn-shadow), var(--btn-active-inset);
+}
+
+/* Slideshow Hero: The base container for the slideshow. */
+.slideshow {
+	position: relative;
+	width: calc(100vw - 40px);
+	min-width: 280px;
+	max-width: 800px;
+	height: calc(100lvh - 40px);
+	margin: 20px auto;
+	padding: 1.5rem 1.5rem 4rem;
+	background-color: var(--tv-background);
+	border: var(--tv-border);
+	border-radius: 8px;
+}
+
+/* Slideshow Item: Used as a container for slideshow content. */
+@keyframes scanline-scroll {
+	0% {
+		background-position-y: 0;
+	}
+	100% {
+		background-position-y: 2.75rem;
+	}
+}
+
+@keyframes transition-static {
+	0% {
+		background-position: 0 0;
+	}
+	25% {
+		background-position: 40px -532px;
+	}
+	50% {
+		background-position: -1230px 55432px;
+	}
+	75% {
+		background-position: 120px 1362px;
+	}
+	100% {
+		background-position: -1523px 6524px;
+	}
+}
+
+.slideshow-item {
+	display: none;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border: var(--tv-border);
+	border-style: inset;
+	border-radius: 6px;
+	font-family: "Press Start 2P", Arial, sans-serif;
+	font-weight: 700;
+	text-stroke: 1px #000;
+	-webkit-text-stroke: 1px #000;
+}
+
+.slideshow-item::after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+
+	/* Outer Screen Gradient */
+	box-shadow: inset 0 0.5rem 4.5rem 2.2rem #0009;
+
+	/* Scanline Effect */
+	background: repeating-linear-gradient(
+			0deg,
+			#0000 0 2.25rem,
+			#0002 2.25rem 2.75rem
+		)
+		fixed;
+	animation: 0.9s linear infinite scanline-scroll;
+}
+.slideshow-item[transitioning]::after {
+	/* Transition Static Effect */
+	background: repeating-radial-gradient(
+			circle at center,
+			#000 0 0.001px,
+			#0000 0.001px 0.002px
+		),
+		repeating-conic-gradient(
+			at center,
+			#aaa 0deg 0.001deg,
+			#fff 0.001deg 0.002deg
+		);
+	animation: 0.2s linear infinite transition-static;
+}
+.slideshow-item.active {
+	display: block;
+}
+
+.slideshow-item div {
+	width: 100%;
+	height: 100%;
+}
+
+.slideshow-item h1 {
+	position: absolute;
+	bottom: 2rem;
+	left: 1rem;
+	margin: 0;
+}
+
+.background {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Slideshow Buttons: Used to advance to the next or previous slide. */
+.slideshow-btn {
+	position: absolute;
+	bottom: 1rem;
+	z-index: 3;
+	width: 3.5rem;
+	transition: all 0.15s;
+}
+.slideshow-btn.prev {
+	left: 1rem;
+}
+.slideshow-btn.next {
+	right: 1rem;
+}
+
+/* Slideshow Bubbles: Used for precise navigation.*/
+.slideshow-bubbles {
+	display: flex;
+	gap: 0.5rem;
+	transform: translateX(-50%);
+	position: absolute;
+	bottom: 1rem;
+	left: 50%;
+	z-index: 3;
+}
+
+.slide-bubble {
+	position: relative;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-color: #000;
+	border: var(--tv-border);
+	border-radius: 1.5rem;
+	box-shadow: var(--btn-shadow);
+	cursor: pointer;
+	transition: all 0.15s;
+}
+.slide-bubble:hover {
+	background-color: var(--btn-hover-background);
+	border: var(--tv-border);
+}
+.slide-bubble:active,
+.slide-bubble.active {
+	background-color: var(--btn-background);
+}
+
+/* Button Glow Effect */
+.slide-bubble::after {
+	content: "";
+	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	border: 0.1rem solid #f110;
+	border-radius: 1.5rem;
+	transition: all 0.15s;
+}
+.slide-bubble:hover::after,
+.slide-bubble.active::after {
+	border: 0.1rem solid #f117;
+}
+
+/* Resize Everything for Larger Screens */
+@media (min-width: 650px) {
+	h1 {
+		font-size: 2rem;
+	}
+
+	.slideshow {
+		padding: 4rem;
+	}
+}
 
     section {
       max-width: 900px;
@@ -152,39 +338,159 @@
     </p>
   </header>
 
-  <!-- Carousel actualizado con las 5 imágenes -->
-  <div class="carousel" aria-roledescription="carousel" aria-label="Galería de imágenes">
-    <div class="carousel-track">
-      <div class="carousel-slide">
-        
-        <img src="https://github.com/user-attachments/assets/175a5d4f-3e05-4186-bfac-15b7613cffeb"/>
+import React, { useCallback, useEffect, useState } from "https://esm.sh/react";
+import ReactDOM from "https://esm.sh/react-dom/client";
 
-      </div>
-      <div class="carousel-slide">
-        <img src="https://github.com/user-attachments/assets/965c265c-205b-4250-975c-20d589b3f416" alt="Panel de control de servicios y puertos">
-      </div>
-      <div class="carousel-slide">
-        <img src="https://github.com/user-attachments/assets/3b911374-bb8b-4bb7-b7f0-6994ac0809bd" alt="Análisis de tráfico en tiempo real">
-      </div>
-      <div class="carousel-slide">
-        <img src="https://github.com/user-attachments/assets/37016e3f-c38b-4124-8143-2089db5b371e" alt="Gestión de interfaces de red">
-      </div>
-      <div class="carousel-slide">
-        <img src="https://github.com/user-attachments/assets/c7d0f894-bbc4-4c19-829c-133b5078ff5f" alt="Configuración y estadísticas del sistema">
-      </div>
-    </div>
+const TIME_TIL_NEXT_SLIDE = 5000;
 
-    <button class="carousel-button prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-    <button class="carousel-button next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+/**
+	Returns `x` mod `y`. Apparently JavaScript modulo doesn't process negative numbers correctly.
+	
+	This solution was found from this article:
+	https://web.archive.org/web/20090717035140if_/javascript.about.com/od/problemsolving/a/modulobug.htm
+	
+	@param {number} x
+	@param {number} y
+	@returns {number}
+*/
+function mod(x, y) {
+	return ((x % y) + y) % y;
+}
 
-    <div class="carousel-dots" role="tablist" aria-label="Navegación de diapositivas">
-      <div class="carousel-dot" role="tab" aria-selected="true" aria-label="Diapositiva 1"></div>
-      <div class="carousel-dot" role="tab" aria-selected="false" aria-label="Diapositiva 2"></div>
-      <div class="carousel-dot" role="tab" aria-selected="false" aria-label="Diapositiva 3"></div>
-      <div class="carousel-dot" role="tab" aria-selected="false" aria-label="Diapositiva 4"></div>
-      <div class="carousel-dot" role="tab" aria-selected="false" aria-label="Diapositiva 5"></div>
-    </div>
-  </div>
+/**
+	A hero slideshow element. This element should contain a set of slides to display.
+	
+	@param {Object} props
+	@param {(JSX.Element | JSX.Element[])?} props.children
+	@returns {JSX.Element}
+*/
+function Slideshow({ children }) {
+	let slides = children;
+	if (!(slides instanceof Array)) {
+		slides = [children];
+	}
+
+	const [lastSlideIndex, setLastSlideIndex] = useState(0);
+	const [slideIndex, setSlideIndex] = useState(0);
+	const [transitioning, setTransitioning] = useState(false);
+
+	/**
+		Sets the slide to the given value.
+		@type {(newSlideIndex: number) => void}
+	*/
+	const gotoSlide = useCallback(
+		(newSlideIndex) => {
+			if (!transitioning) {
+				setTransitioning(true);
+
+				setTimeout(() => {
+					setTransitioning(false);
+					setSlideIndex((currentSlide) => {
+						setLastSlideIndex(currentSlide);
+						return mod(newSlideIndex, slides.length);
+					});
+				}, 100);
+			}
+		},
+		[slides, slideIndex, transitioning]
+	);
+
+	/**
+		Advances to the next slide of the slideshow.
+		@type {() => void}
+	*/
+	const advanceNextSlide = useCallback(() => {
+		// This is probably not the most React way to do this but it works.
+		gotoSlide(slideIndex + 1);
+	}, [slides, slideIndex]);
+
+	/**
+		Advances to the previous slide of the slideshow.
+		@type {() => void}
+	*/
+	const advancePrevSlide = useCallback(() => {
+		gotoSlide(slideIndex - 1);
+	}, [slides, slideIndex]);
+
+	useEffect(() => {
+		const advanceInterval = setInterval(() => {
+			advanceNextSlide();
+		}, TIME_TIL_NEXT_SLIDE);
+
+		return () => {
+			clearInterval(advanceInterval);
+		};
+	}, [slideIndex]);
+
+	return (
+		<div className="slideshow">
+			{slides &&
+				slides.map((slide, idx) => (
+					<div
+						className={
+							idx === slideIndex ? "slideshow-item active" : "slideshow-item"
+						}
+						key={idx}
+						transitioning={transitioning && "true"}
+					>
+						{slide}
+					</div>
+				))}
+
+			<button className="slideshow-btn next" onClick={advanceNextSlide}>
+				NEXT
+			</button>
+			<button className="slideshow-btn prev" onClick={advancePrevSlide}>
+				PREV
+			</button>
+
+			<div className="slideshow-bubbles">
+				{slides &&
+					slides.map((_, idx) => (
+						<button
+							type="button"
+							className={idx === slideIndex ? "slide-bubble active" : "slide-bubble"}
+							onClick={() => gotoSlide(idx)}
+						/>
+					))}
+			</div>
+		</div>
+	);
+}
+
+function App() {
+	return (
+		<Slideshow>
+			<div>
+				<img
+					className="background"
+					src="https://images.unsplash.com/photo-1579309401389-a2476dddf3d4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="A closeup of Pac-Man."
+				/>
+				<h1>Tenemos cientos de enlaces activos!!</h1>
+			</div>
+			<div>
+				<img
+					className="background"
+					src="https://images.unsplash.com/photo-1538511625527-e893585d8ed2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="Bowling lane."
+				/>
+				<h1>Puertos abiertos!</h1>
+			</div>
+			<div>
+				<img
+					className="background"
+					src="https://images.unsplash.com/photo-1676515725176-275bb09cc59b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="Delicious burgers."
+				/>
+				<h1>Tambien nos gustaría tener control del tr</h1>
+			</div>
+		</Slideshow>
+	);
+}
+
+ReactDOM.createRoot(document.getElementById("app")).render(<App />);
+
 
   <section>
     <h2>⚙️ Gestión Integral de Puertos y Servicios</h2>
