@@ -815,7 +815,128 @@
       </div>
     </div>
   </section>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            transition: all 0.3s ease;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        .zoom-in {
+            animation: zoomIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card overflow-hidden bg-gray-800 rounded-lg shadow-lg" onclick="openModal('Screenshot 2025-10-29 at 16-18-58 RPi Network Security Dashboard.png')">
+            <div class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                <i class="fas fa-desktop text-4xl text-blue-400"></i>
+            </div>
+            <div class="p-4">
+                <h3 class="font-bold mb-2">Dashboard Principal</h3>
+                <p class="text-gray-400 text-sm">Vista general del estado de la red y del dispositivo.</p>
+            </div>
+        </div>
+        
+        <!-- Ejemplo de otras tarjetas -->
+        <div class="card overflow-hidden bg-gray-800 rounded-lg shadow-lg" onclick="openModal('https://via.placeholder.com/800x600')">
+            <div class="h-48 bg-gradient-to-br from-green-500/20 to-yellow-500/20 flex items-center justify-center">
+                <i class="fas fa-shield-alt text-4xl text-green-400"></i>
+            </div>
+            <div class="p-4">
+                <h3 class="font-bold mb-2">Seguridad</h3>
+                <p class="text-gray-400 text-sm">Estado de seguridad y configuración de firewall.</p>
+            </div>
+        </div>
+        
+        <div class="card overflow-hidden bg-gray-800 rounded-lg shadow-lg" onclick="openModal('https://via.placeholder.com/800x600')">
+            <div class="h-48 bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
+                <i class="fas fa-chart-line text-4xl text-red-400"></i>
+            </div>
+            <div class="p-4">
+                <h3 class="font-bold mb-2">Estadísticas</h3>
+                <p class="text-gray-400 text-sm">Métricas y análisis de rendimiento del sistema.</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-overlay absolute inset-0 fade-in" onclick="closeModal()"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="modal-content bg-gray-800 rounded-lg overflow-hidden shadow-xl zoom-in relative">
+                <button class="absolute top-4 right-4 text-white bg-gray-900 hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center z-10" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img id="modalImage" src="" alt="Vista ampliada" class="w-full h-auto">
+                <div class="p-4 bg-gray-900">
+                    <h3 id="modalTitle" class="font-bold text-lg"></h3>
+                    <p id="modalDescription" class="text-gray-400 text-sm mt-1"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            // Obtener información de la tarjeta clickeada
+            const card = event.currentTarget;
+            const title = card.querySelector('h3').textContent;
+            const description = card.querySelector('p').textContent;
+            
+            // Configurar el modal
+            modalImage.src = imageSrc;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDescription').textContent = description;
+            
+            // Mostrar el modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+        
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
   <!-- Features Section -->
   <section id="features" class="py-16 px-4">
     <div class="container mx-auto max-w-6xl">
