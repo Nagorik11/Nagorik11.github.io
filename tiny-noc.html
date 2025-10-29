@@ -462,29 +462,388 @@
     </div>
   </section>
 
-  <!-- Stats Section -->
-  <section class="py-8 px-4">
+ <!-- Hero Section -->
+  <section class="py-16 px-4">
     <div class="container mx-auto max-w-6xl">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="stat-card text-center">
-          <div class="stat-value">24/7</div>
-          <div class="text-gray-400">Operación Continua</div>
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div class="lg:w-1/2">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            <span class="header-gradient">Eficiencia Energética</span><br>
+            <span class="text-white">en Raspberry Pi</span>
+          </h1>
+          <p class="text-lg text-gray-300 mb-8 max-w-lg">
+            Especificaciones detalladas de consumo energético para diferentes modelos de Raspberry Pi.
+            Optimizado para operación 24/7 con el mínimo consumo posible.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <div class="tech-tag">
+              <i class="fas fa-bolt mr-1 text-yellow-500"></i>
+              Bajo Consumo
+            </div>
+            <div class="tech-tag">
+              <i class="fas fa-leaf mr-1 text-green-500"></i>
+              Eficiencia Energética
+            </div>
+            <div class="tech-tag">
+              <i class="fas fa-chart-line mr-1 text-blue-500"></i>
+              Métricas en Tiempo Real
+            </div>
+            <div class="tech-tag">
+              <i class="fas fa-dollar-sign mr-1 text-emerald-500"></i>
+              Ahorro de Costos
+            </div>
+          </div>
         </div>
-        <div class="stat-card text-center">
-          <div class="stat-value">&lt;5W</div>
-          <div class="text-gray-400">Consumo Energético</div>
-        </div>
-        <div class="stat-card text-center">
-          <div class="stat-value">100%</div>
-          <div class="text-gray-400">Código Abierto</div>
-        </div>
-        <div class="stat-card text-center">
-          <div class="stat-value">ARM</div>
-          <div class="text-gray-400">Optimizado</div>
+        
+        <div class="lg:w-1/2">
+          <div class="card p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-bold">Comparativa de Consumo</h3>
+              <span class="efficiency-rating">
+                <i class="fas fa-star mr-2"></i>
+                94% Eficiencia
+              </span>
+            </div>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span>Raspberry Pi Zero W</span>
+                  <span class="text-green-400">0.5W - 1.2W</span>
+                </div>
+                <div class="comparison-bar">
+                  <div class="comparison-fill" style="width: 20%">20%</div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span>Raspberry Pi 3 B+</span>
+                  <span class="text-yellow-400">2.5W - 4.0W</span>
+                </div>
+                <div class="comparison-bar">
+                  <div class="comparison-fill" style="width: 45%">45%</div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span>Raspberry Pi 4 (2GB)</span>
+                  <span class="text-orange-400">3.5W - 6.0W</span>
+                </div>
+                <div class="comparison-bar">
+                  <div class="comparison-fill" style="width: 70%">70%</div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between text-sm mb-1">
+                  <span>Servidor x86 Típico</span>
+                  <span class="text-red-400">40W - 100W</span>
+                </div>
+                <div class="comparison-bar">
+                  <div class="comparison-fill" style="width: 100%">100%</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cost-calculation mt-6">
+              <h4 class="font-bold mb-2">Cálculo de Costo Anual</h4>
+              <p class="text-sm text-gray-400">
+                Basado en Raspberry Pi 4 (4W promedio) vs Servidor x86 (60W promedio)
+              </p>
+              <div class="flex justify-between mt-2">
+                <span class="text-green-400">~$7 USD/año</span>
+                <span class="text-red-400">~$105 USD/año</span>
+              </div>
+              <div class="flex justify-between text-xs text-gray-500">
+                <span>Raspberry Pi</span>
+                <span>Servidor x86</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Consumption Specifications Section -->
+  <section id="consumption" class="py-16 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Especificaciones de Consumo</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Análisis detallado del consumo energético en diferentes modelos de Raspberry Pi ejecutando ARM Network Monitor.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <!-- Raspberry Pi Zero W -->
+        <div class="consumption-card p-6">
+          <div class="consumption-badge">Más Eficiente</div>
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center mr-4">
+              <i class="fab fa-raspberry-pi text-blue-400 text-xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Pi Zero W</h3>
+              <p class="text-gray-400 text-sm">Single-core 1GHz</p>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex justify-between text-sm mb-1">
+              <span>Consumo Promedio</span>
+              <span class="font-bold text-green-400">0.8W</span>
+            </div>
+            <div class="power-meter">
+              <div class="power-level power-low" style="width: 15%"></div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <div class="text-gray-400">Máximo</div>
+              <div class="font-bold">1.2W</div>
+            </div>
+            <div>
+              <div class="text-gray-400">Mínimo</div>
+              <div class="font-bold">0.5W</div>
+            </div>
+            <div>
+              <div class="text-gray-400">RAM</div>
+              <div class="font-bold">512MB</div>
+            </div>
+            <div>
+              <div class="text-gray-400">Costo/año</div>
+              <div class="font-bold text-green-400">$1.40</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Raspberry Pi 3 B+ -->
+        <div class="consumption-card p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center mr-4">
+              <i class="fab fa-raspberry-pi text-green-400 text-xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Pi 3 B+</h3>
+              <p class="text-gray-400 text-sm">Quad-core 1.4GHz</p>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex justify-between text-sm mb-1">
+              <span>Consumo Promedio</span>
+              <span class="font-bold text-yellow-400">3.2W</span>
+            </div>
+            <div class="power-meter">
+              <div class="power-level power-medium" style="width: 40%"></div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <div class="text-gray-400">Máximo</div>
+              <div class="font-bold">4.0W</div>
+            </div>
+            <div>
+              <div class="text-gray-400">Mínimo</div>
+              <div class="font-bold">2.5W</div>
+            </div>
+            <div>
+              <div class="text-gray-400">RAM</div>
+              <div class="font-bold">1GB</div>
+            </div>
+            <div>
+              <div class="text-gray-400">Costo/año</div>
+              <div class="font-bold text-yellow-400">$5.60</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Raspberry Pi 4 -->
+        <div class="consumption-card p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mr-4">
+              <i class="fab fa-raspberry-pi text-purple-400 text-xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Pi 4 (2GB)</h3>
+              <p class="text-gray-400 text-sm">Quad-core 1.5GHz</p>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex justify-between text-sm mb-1">
+              <span>Consumo Promedio</span>
+              <span class="font-bold text-orange-400">4.5W</span>
+            </div>
+            <div class="power-meter">
+              <div class="power-level power-high" style="width: 56%"></div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <div class="text-gray-400">Máximo</div>
+              <div class="font-bold">6.0W</div>
+            </div>
+            <div>
+              <div class="text-gray-400">Mínimo</div>
+              <div class="font-bold">3.5W</div>
+            </div>
+            <div>
+              <div class="text-gray-400">RAM</div>
+              <div class="font-bold">2GB</div>
+            </div>
+            <div>
+              <div class="text-gray-400">Costo/año</div>
+              <div class="font-bold text-orange-400">$7.88</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Detailed Specifications Table -->
+      <div class="card p-6 mb-12">
+        <h3 class="text-xl font-bold mb-4">Especificaciones Técnicas Detalladas</h3>
+        <div class="overflow-x-auto">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Modelo</th>
+                <th>CPU</th>
+                <th>RAM</th>
+                <th>Consumo (Idle)</th>
+                <th>Consumo (Carga)</th>
+                <th>Eficiencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-medium">Raspberry Pi Zero W</td>
+                <td>1×1.0GHz</td>
+                <td>512MB</td>
+                <td class="text-green-400">0.5W</td>
+                <td class="text-green-400">1.2W</td>
+                <td>
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-700 rounded-full h-2 mr-2">
+                      <div class="bg-green-500 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <span>95%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium">Raspberry Pi 3 B+</td>
+                <td>4×1.4GHz</td>
+                <td>1GB</td>
+                <td class="text-yellow-400">2.5W</td>
+                <td class="text-yellow-400">4.0W</td>
+                <td>
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-700 rounded-full h-2 mr-2">
+                      <div class="bg-yellow-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <span>85%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium">Raspberry Pi 4 (2GB)</td>
+                <td>4×1.5GHz</td>
+                <td>2GB</td>
+                <td class="text-orange-400">3.5W</td>
+                <td class="text-orange-400">6.0W</td>
+                <td>
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-700 rounded-full h-2 mr-2">
+                      <div class="bg-orange-500 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                    <span>80%</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-medium">Raspberry Pi 4 (4GB)</td>
+                <td>4×1.5GHz</td>
+                <td>4GB</td>
+                <td class="text-orange-400">4.0W</td>
+                <td class="text-orange-400">7.0W</td>
+                <td>
+                  <div class="flex items-center">
+                    <div class="w-16 bg-gray-700 rounded-full h-2 mr-2">
+                      <div class="bg-orange-500 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                    <span>75%</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Optimization Tips -->
+      <div class="card p-6">
+        <h3 class="text-xl font-bold mb-4">Consejos para Optimizar el Consumo</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-bold mb-2 text-green-400 flex items-center">
+              <i class="fas fa-check-circle mr-2"></i>
+              Recomendaciones
+            </h4>
+            <ul class="space-y-2 text-gray-400">
+              <li class="flex items-start">
+                <i class="fas fa-chevron-right text-green-400 mt-1 mr-2 text-xs"></i>
+                Usar Raspberry Pi Zero W para despliegues mínimos
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-chevron-right text-green-400 mt-1 mr-2 text-xs"></i>
+                Desactivar interfaces no utilizadas (Bluetooth, HDMI)
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-chevron-right text-green-400 mt-1 mr-2 text-xs"></i>
+                Usar fuentes de alimentación oficiales de 5V
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-chevron-right text-green-400 mt-1 mr-2 text-xs"></i>
+                Implementar suspensión de componentes inactivos
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-2 text-red-400 flex items-center">
+              <i class="fas fa-times-circle mr-2"></i>
+              Evitar
+            </h4>
+            <ul class="space-y-2 text-gray-400">
+              <li class="flex items-start">
+                <i class="fas fa-chevron-right text-red-400 mt-1 mr-2 text-xs"></i>
+                Fuentes de alimentación de bajo voltaje
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-chevron-right text-red-400 mt-1 mr-2 text-xs"></i>
+                Periféricos USB de alto consumo
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-chevron-right text-red-400 mt-1 mr-2 text-xs"></i>
+                Overclocking sin refrigeración adecuada
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-chevron-right text-red-400 mt-1 mr-2 text-xs"></i>
+                Ejecutar servicios innecesarios en segundo plano
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- Features Section -->
   <section id="features" class="py-16 px-4">
