@@ -851,91 +851,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white p-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card overflow-hidden bg-gray-800 rounded-lg shadow-lg" onclick="openModal('Screenshot 2025-10-29 at 16-18-58 RPi Network Security Dashboard.png')">
-            <div class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                <i class="fas fa-desktop text-4xl text-blue-400"></i>
-            </div>
-            <div class="p-4">
-                <h3 class="font-bold mb-2">Dashboard Principal</h3>
-                <p class="text-gray-400 text-sm">Vista general del estado de la red y del dispositivo.</p>
-            </div>
-        </div>
-        
-        <!-- Ejemplo de otras tarjetas -->
-        <div class="card overflow-hidden bg-gray-800 rounded-lg shadow-lg" onclick="openModal('https://via.placeholder.com/800x600')">
-            <div class="h-48 bg-gradient-to-br from-green-500/20 to-yellow-500/20 flex items-center justify-center">
-                <i class="fas fa-shield-alt text-4xl text-green-400"></i>
-            </div>
-            <div class="p-4">
-                <h3 class="font-bold mb-2">Seguridad</h3>
-                <p class="text-gray-400 text-sm">Estado de seguridad y configuración de firewall.</p>
-            </div>
-        </div>
-        
-        <div class="card overflow-hidden bg-gray-800 rounded-lg shadow-lg" onclick="openModal('https://via.placeholder.com/800x600')">
-            <div class="h-48 bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
-                <i class="fas fa-chart-line text-4xl text-red-400"></i>
-            </div>
-            <div class="p-4">
-                <h3 class="font-bold mb-2">Estadísticas</h3>
-                <p class="text-gray-400 text-sm">Métricas y análisis de rendimiento del sistema.</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal -->
-    <div id="imageModal" class="fixed inset-0 z-50 hidden">
-        <div class="modal-overlay absolute inset-0 fade-in" onclick="closeModal()"></div>
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="modal-content bg-gray-800 rounded-lg overflow-hidden shadow-xl zoom-in relative">
-                <button class="absolute top-4 right-4 text-white bg-gray-900 hover:bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center z-10" onclick="closeModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-                <img id="modalImage" src="" alt="Vista ampliada" class="w-full h-auto">
-                <div class="p-4 bg-gray-900">
-                    <h3 id="modalTitle" class="font-bold text-lg"></h3>
-                    <p id="modalDescription" class="text-gray-400 text-sm mt-1"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function openModal(imageSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            
-            // Obtener información de la tarjeta clickeada
-            const card = event.currentTarget;
-            const title = card.querySelector('h3').textContent;
-            const description = card.querySelector('p').textContent;
-            
-            // Configurar el modal
-            modalImage.src = imageSrc;
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalDescription').textContent = description;
-            
-            // Mostrar el modal
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevenir scroll
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Restaurar scroll
-        }
-        
-        // Cerrar modal con tecla ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-    </script>
-</body>
 </html>
   <!-- Features Section -->
   <section id="features" class="py-16 px-4">
@@ -1100,59 +1016,41 @@
             </div>
         </div>
     </div>
-  <section id="gallery" class="py-16 px-4 bg-dark/50">
-    <div class="container mx-auto max-w-6xl">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4">Capturas de la Aplicación</h2>
-        <p class="text-gray-400 max-w-2xl mx-auto">
-          Interfaz intuitiva y paneles de control diseñados para una experiencia de usuario óptima.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card overflow-hidden">
-          <div class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-            <i class="fas fa-desktop text-4xl text-blue-400"></i>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold mb-2">Dashboard Principal</h3>
-            <p class="text-gray-400 text-sm">Vista general del estado de la red y del dispositivo.</p>
-          </div>
-          <img src="Screenshot 2025-10-29 at 16-18-58 RPi Network Security Dashboard.png" />
-        </div>
-        
-        <div class="card overflow-hidden">
-          <div class="h-48 bg-gradient-to-br from-green-500/20 to-blue-500/20 flex items-center justify-center">
-            <i class="fas fa-chart-bar text-4xl text-green-400"></i>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold mb-2">Análisis de Tráfico y Escaneo de Red</h3>
-            <p class="text-gray-400 text-sm">Métricas sobre captura de paquetes e información perimetral de la red.</p>
-          </div>
-        </div>
 
-        <div class="card overflow-hidden">
-          <div class="h-48 bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
-            <i class="fas fa-shield-alt text-4xl text-red-400"></i>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold mb-2">Reglas de Firewall</h3>
-            <p class="text-gray-400 text-sm">Maneja las políticas de tu infraestructura de red.</p>
-          </div>
-        </div>
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            // Obtener información de la tarjeta clickeada
+            const card = event.currentTarget;
+            const title = card.querySelector('h3').textContent;
+            const description = card.querySelector('p').textContent;
+            
+            // Configurar el modal
+            modalImage.src = imageSrc;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDescription').textContent = description;
+            
+            // Mostrar el modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
         
-        <div class="card overflow-hidden">
-          <div class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-            <i class="fas fa-cogs text-4xl text-purple-400"></i>
-          </div>
-          <div class="p-4">
-            <h3 class="font-bold mb-2">Manager de Puertos y Tráfico</h3>
-            <p class="text-gray-400 text-sm">Visualiza en tiempo real procesos, puertos y procedencia geográfica.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+        
+        // Cerrar modal con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>>
 
   <!-- Tech Stack Section -->
   <section id="tech" class="py-16 px-4">
