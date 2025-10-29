@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ARM-Based Network Monitoring Application for Raspberry Pi and ARM architectures. Created by Fernando Valenzuela." />
-  <title>ARM-Based Network Monitoring Application</title>
+  <meta name="description" content="Aplicación de Monitoreo de Red Basada en ARM para Raspberry Pi y arquitecturas ARM. Creado por Fernando Valenzuela." />
+  <title>Aplicación de Monitoreo de Red Basada en ARM</title>
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/cb/Raspberry_Pi_Logo.svg" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -31,6 +31,66 @@
       margin: 0 auto;
       font-size: 1.1rem;
     }
+
+    /* Carousel styles */
+    .carousel {
+      max-width: 900px;
+      margin: 1.5rem auto;
+      position: relative;
+      background: #0b0f13;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease;
+      will-change: transform;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+    .carousel-slide img {
+      display: block;
+      width: 100%;
+      height: 420px;
+      object-fit: contain;
+      background-color: #0d1117;
+    }
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(33,38,45,0.7);
+      border: none;
+      color: #e6edf3;
+      padding: 0.8rem 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+    }
+    .carousel-button:hover { background: rgba(48,54,61,0.9); }
+    .carousel-button.prev { left: 12px; }
+    .carousel-button.next { right: 12px; }
+    .carousel-dots {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 12px;
+      display: flex;
+      gap: 8px;
+    }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+    }
+    .carousel-dot.active { background: #58a6ff; }
+
     section {
       max-width: 900px;
       margin: 2rem auto;
@@ -85,43 +145,75 @@
 <body>
 
   <header>
-    <h1>ARM-Based Network Monitoring Application</h1>
+    <h1>Aplicación de Monitoreo de Red Basada en ARM</h1>
     <p>
-      Transform your Raspberry Pi into a fully functional Network Operations Center (NOC).  
-      Real-time service visibility, traffic analytics, and interface control — optimized for ARM architectures.
+      Transforma tu Raspberry Pi en un Centro de Operaciones de Red (NOC) completamente funcional.  
+      Visibilidad en tiempo real de servicios, análisis de tráfico y control de interfaz — optimizado para arquitecturas ARM.
     </p>
   </header>
 
+  <!-- Carousel actualizado con las 5 imágenes -->
+  <div class="carousel" aria-roledescription="carousel" aria-label="Galería de imágenes">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img src="https://github.com/user-attachments/assets/175a5d4f-3e05-4186-bfac-15b7613cffeb" alt="Vista de la aplicación de monitoreo de red">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://github.com/user-attachments/assets/965c265c-205b-4250-975c-20d589b3f416" alt="Panel de control de servicios y puertos">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://github.com/user-attachments/assets/3b911374-bb8b-4bb7-b7f0-6994ac0809bd" alt="Análisis de tráfico en tiempo real">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://github.com/user-attachments/assets/37016e3f-c38b-4124-8143-2089db5b371e" alt="Gestión de interfaces de red">
+      </div>
+      <div class="carousel-slide">
+        <img src="https://github.com/user-attachments/assets/c7d0f894-bbc4-4c19-829c-133b5078ff5f" alt="Configuración y estadísticas del sistema">
+      </div>
+    </div>
+
+    <button class="carousel-button prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-button next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+
+    <div class="carousel-dots" role="tablist" aria-label="Navegación de diapositivas">
+      <div class="carousel-dot" role="tab" aria-selected="true" aria-label="Diapositiva 1"></div>
+      <div class="carousel-dot" role="tab" aria-selected="false" aria-label="Diapositiva 2"></div>
+      <div class="carousel-dot" role="tab" aria-selected="false" aria-label="Diapositiva 3"></div>
+      <div class="carousel-dot" role="tab" aria-selected="false" aria-label="Diapositiva 4"></div>
+      <div class="carousel-dot" role="tab" aria-selected="false" aria-label="Diapositiva 5"></div>
+    </div>
+  </div>
+
   <section>
-    <h2>⚙️ Comprehensive Port & Service Management</h2>
+    <h2>⚙️ Gestión Integral de Puertos y Servicios</h2>
     <ul>
-      <li><b>Ports & Protocols:</b> Monitors TCP and UDP services (SSH:22, DNS:53, HTTP:80, HTTPS:443).</li>
-      <li><b>Process & PID Tracking:</b> Maps open ports to their exact processes (e.g., <code>dev-server</code>, PID 5678).</li>
-      <li><b>Interface Binding:</b> Shows which network interface each service listens on (e.g., <code>0.0.0.0</code> or <code>127.0.0.1</code>).</li>
-      <li><b>Centralized Control:</b> Includes action tools for managing, blocking, or restarting services directly from the UI.</li>
+      <li><b>Puertos y Protocolos:</b> Monitorea servicios TCP y UDP (SSH:22, DNS:53, HTTP:80, HTTPS:443).</li>
+      <li><b>Seguimiento de Procesos y PID:</b> Asigna puertos abiertos a sus procesos exactos (ej. <code>dev-server</code>, PID 5678).</li>
+      <li><b>Vinculación de Interfaz:</b> Muestra en qué interfaz de red escucha cada servicio (ej. <code>0.0.0.0</code> o <code>127.0.0.1</code>).</li>
+      <li><b>Control Centralizado:</b> Incluye herramientas de acción para gestionar, bloquear o reiniciar servicios directamente desde la interfaz.</li>
     </ul>
   </section>
 
   <section>
-    <h2>🌐 Visual Traffic Flow Analysis</h2>
+    <h2>🌐 Análisis Visual de Flujo de Tráfico</h2>
     <ul>
-      <li><b>Traffic Segmentation:</b> Categorizes flows by region or type (Social-America, North America, Africa).</li>
-      <li><b>Service-Level Routing:</b> Visualizes connections from the IPT Traffic Hub to specific ports (e.g., <code>rope:600</code>, <code>custom-app:8080</code>).</li>
-      <li><b>Proportional Representation:</b> Line thickness reflects traffic volume and activity levels.</li>
+      <li><b>Segmentación de Tráfico:</b> Categoriza flujos por región o tipo (Social-América, Norteamérica, África).</li>
+      <li><b>Enrutamiento a Nivel de Servicio:</b> Visualiza conexiones desde el Hub de Tráfico IPT a puertos específicos (ej. <code>rope:600</code>, <code>custom-app:8080</code>).</li>
+      <li><b>Representación Proporcional:</b> El grosor de las líneas refleja el volumen de tráfico y los niveles de actividad.</li>
     </ul>
   </section>
 
   <section>
-    <h2>🍓 Optimized for Raspberry Pi & ARM</h2>
+    <h2>🍓 Optimizado para Raspberry Pi y ARM</h2>
     <ul>
-      <li><b>Low-Power Operation:</b> Runs 24/7 with minimal energy consumption.</li>
-      <li><b>Cost-Effective:</b> Built for accessible ARM hardware like the Raspberry Pi.</li>
-      <li><b>Compact & Portable:</b> Lightweight, deployable anywhere on the network.</li>
+      <li><b>Operación de Bajo Consumo:</b> Funciona 24/7 con consumo mínimo de energía.</li>
+      <li><b>Económico:</b> Construido para hardware ARM accesible como Raspberry Pi.</li>
+      <li><b>Compacto y Portátil:</b> Ligero, desplegable en cualquier lugar de la red.</li>
     </ul>
   </section>
 
   <section>
-    <h2>🔧 Technical Stack</h2>
+    <h2>🔧 Pila Técnica</h2>
     <div class="tags">
       <span>React</span>
       <span>Vite</span>
@@ -131,14 +223,64 @@
       <span>Raspberry Pi</span>
     </div>
     <div class="project-links" style="margin-top: 1rem;">
-      <a href="https://rpi-network-security-dashboard.pages.dev" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-      <a href="https://github.com/Nagorik11/rpi-network-security-dashboard" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+      <a href="https://rpi-network-security-dashboard.pages.dev" target="_blank"><i class="fas fa-external-link-alt"></i> Demo en Vivo</a>
+      <a href="https://github.com/Nagorik11/rpi-network-security-dashboard" target="_blank"><i class="fab fa-github"></i> Repositorio GitHub</a>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 Fernando Valenzuela — Built for Network Security and ARM Innovation.</p>
+    <p>© 2025 Fernando Valenzuela — Construido para Seguridad de Red e Innovación ARM.</p>
   </footer>
+
+  <script>
+    // Carousel functionality
+    (function() {
+      const track = document.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const prevButton = document.querySelector('.carousel-button.prev');
+      const nextButton = document.querySelector('.carousel-button.next');
+      const dotsNav = document.querySelector('.carousel-dots');
+      const dots = Array.from(dotsNav.children);
+      let currentIndex = 0;
+
+      function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === index);
+          d.setAttribute('aria-selected', i === index ? 'true' : 'false');
+        });
+        currentIndex = index;
+      }
+
+      prevButton.addEventListener('click', () => {
+        goToSlide(currentIndex - 1);
+        resetAutoplay();
+      });
+      nextButton.addEventListener('click', () => {
+        goToSlide(currentIndex + 1);
+        resetAutoplay();
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+          resetAutoplay();
+        });
+      });
+
+      // Autoplay
+      let autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+      function resetAutoplay() {
+        clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+      }
+
+      // Initialize
+      goToSlide(0);
+    })();
+  </script>
 
 </body>
 </html>
