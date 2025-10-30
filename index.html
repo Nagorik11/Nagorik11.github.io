@@ -479,6 +479,14 @@
             font-size: 1.8rem;
             color: var(--accent);
             transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .certification-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
         }
         
         .certification-card:hover .certification-icon {
@@ -924,8 +932,7 @@
                     <div class="certification-card fade-in">
                         <div class="certification-header">
                             <div class="certification-icon">
-                                
-                                <img src="https://images.credly.com/size/340x340/images/242902b5-f527-42ad-865e-977c9e1b5b58/image.png"/>
+                                <img src="https://images.credly.com/size/340x340/images/242902b5-f527-42ad-865e-977c9e1b5b58/image.png" alt="Ethical Hacker"/>
                             </div>
                             <div class="certification-title">
                                 <h3>Ethical Hacker</h3>
@@ -935,7 +942,6 @@
                         </div>
                         <div class="certification-description">
                             <p>The holder of this student level credential has a broad understanding of the legal and compliance requirements and is proficient in the art of scoping, executing, reporting vulnerability assessments, and recommending mitigation strategies.</p>                            
-                            
                         </div>
                         <a href="https://www.credly.com/badges/6b567310-9f47-4b83-b292-d74f45135c4e" 
                            class="btn certification-link"
@@ -949,8 +955,7 @@
                     <div class="certification-card fade-in">
                         <div class="certification-header">
                             <div class="certification-icon">
-                                
-                                <img src="https://images.credly.com/size/340x340/images/53f37f83-04a1-4935-9b1e-21a99cc6e1b2/CyberOpsAssoc.png"/>
+                                <img src="https://images.credly.com/size/340x340/images/53f37f83-04a1-4935-9b1e-21a99cc6e1b2/CyberOpsAssoc.png" alt="CyberOps Associate"/>
                             </div>
                             <div class="certification-title">
                                 <h3>CyberOps Associate</h3>
@@ -959,7 +964,7 @@
                             </div>
                         </div>
                         <div class="certification-description">
-                            <p>PThe holder of this student-level credential has a broad understanding of Security Operations. They developed problem-solving skills to detect and analyze intrusions and monitor the network by completing up to 30 hours of 52 hands-on labs using virtual machines (Security Onion - ELK) and/or Cisco Packet Tracer.</p>
+                            <p>The holder of this student-level credential has a broad understanding of Security Operations. They developed problem-solving skills to detect and analyze intrusions and monitor the network by completing up to 30 hours of 52 hands-on labs using virtual machines (Security Onion - ELK) and/or Cisco Packet Tracer.</p>
                         </div>
                         <a href="https://www.credly.com/badges/22c93b6e-4477-4109-80f1-9693aa8a82f8" 
                            class="btn certification-link"
@@ -973,7 +978,7 @@
                     <div class="certification-card fade-in">
                         <div class="certification-header">
                             <div class="certification-icon">
-                            <img src="https://images.credly.com/size/340x340/images/5d5ac32b-d239-42b8-9665-8a921dc3ab47/image.png"/>
+                                <img src="https://images.credly.com/size/340x340/images/5d5ac32b-d239-42b8-9665-8a921dc3ab47/image.png" alt="Cyber Threat Management"/>
                             </div>
                             <div class="certification-title">
                                 <h3>Cyber Threat Management</h3>
@@ -993,69 +998,90 @@
                         </a>
                     </div>
 
-                     <div class="certification-card fade-in">
-                        <div class="certification-header">
-                            <div class="certification-icon">
-                            <img src="https://learn.eccouncil.org/assets/icon/logo-learning.webp"/>
-                            </div>
-                            <div class="certification-title">
-                                <h3>Ethical Hacking Essentials (EHE) </h3>
-                                <p class="certification-issuer">EC-Council</p>
-                                <p class="certification-date">Obtenida: Marzo 2023</p>
-                            </div>
-                        </div>
-                        <div class="certification-description">
-                            <p>The holder of this student-level credential is familiar with cybersecurity policies and governance to ensure an organization complies with ethics standards and legal and regulatory frameworks.</p>
-                        </div>
-                        <a href="https://learn.eccouncil.org/certificate/f34dd81b-04b3-411c-9902-4310f463fbf7?logged=false!
-                           class="btn certification-link"
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            <i class="fas fa-external-link-alt"></i>
-                            Ver Credencial
-                        </a>
-                    </div>
-                </div>
-
-                  <div class="certification-card fade-in">
-                        <div class="certification-header">
-                            <div class="certification-icon">
-                            <img src="https://learn.eccouncil.org/assets/icon/logo-learning.webp"/>
-                            </div>
-                            <div class="certification-title">
-                                <h3>Network Defense Essentials (NDE) </h3>
-                                <p class="certification-issuer">EC-Council</p>
-                                <p class="certification-date">Obtenida: Marzo 2023</p>
-                            </div>
-                        </div>
-                        <div class="certification-description">
-                            <p>The holder of this student-level credential is familiar with cybersecurity policies and governance to ensure an organization complies with ethics standards and legal and regulatory frameworks.</p>
-                        </div>
-                        <a href="https://learn.eccouncil.org/certificate/a395c384-69ec-4327-beb1-6cf495608bf9?logged=false
-                           class="btn certification-link"
-                           target="_blank" 
-                           rel="noopener noreferrer">
-                            <i class="fas fa-external-link-alt"></i>
-                            Ver Credencial
-                        </a>
-                    </div>
-                </div>
-                    
                     <div class="certification-card fade-in">
                         <div class="certification-header">
                             <div class="certification-icon">
-                            <img src="https://images.credly.com/size/340x340/images/64e6e2af-459c-4615-9202-3d2697a21b35/blob"/>
+                                <img src="https://learn.eccouncil.org/assets/icon/logo-learning.webp" alt="Ethical Hacking Essentials"/>
+                            </div>
+                            <div class="certification-title">
+                                <h3>Ethical Hacking Essentials (EHE)</h3>
+                                <p class="certification-issuer">EC-Council</p>
+                                <p class="certification-date">Obtenida: Marzo 2023</p>
+                            </div>
+                        </div>
+                        <div class="certification-description">
+                            <p>The holder of this student-level credential is familiar with cybersecurity policies and governance to ensure an organization complies with ethics standards and legal and regulatory frameworks.</p>
+                        </div>
+                        <a href="https://learn.eccouncil.org/certificate/f34dd81b-04b3-411c-9902-4310f463fbf7?logged=false" 
+                           class="btn certification-link"
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i>
+                            Ver Credencial
+                        </a>
+                    </div>
+
+                    <div class="certification-card fade-in">
+                        <div class="certification-header">
+                            <div class="certification-icon">
+                                <img src="https://learn.eccouncil.org/assets/icon/logo-learning.webp" alt="Network Defense Essentials"/>
+                            </div>
+                            <div class="certification-title">
+                                <h3>Network Defense Essentials (NDE)</h3>
+                                <p class="certification-issuer">EC-Council</p>
+                                <p class="certification-date">Obtenida: Marzo 2023</p>
+                            </div>
+                        </div>
+                        <div class="certification-description">
+                            <p>The holder of this student-level credential is familiar with cybersecurity policies and governance to ensure an organization complies with ethics standards and legal and regulatory frameworks.</p>
+                        </div>
+                        <a href="https://learn.eccouncil.org/certificate/a395c384-69ec-4327-beb1-6cf495608bf9?logged=false" 
+                           class="btn certification-link"
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i>
+                            Ver Credencial
+                        </a>
+                    </div>
+
+                    <div class="certification-card fade-in">
+                        <div class="certification-header">
+                            <div class="certification-icon">
+                                <img src="https://images.credly.com/size/340x340/images/64e6e2af-459c-4615-9202-3d2697a21b35/blob" alt="DevSecOps for Managers"/>
                             </div>
                             <div class="certification-title">
                                 <h3>CLFS180: Introduction to DevSecOps for Managers</h3>
                                 <p class="certification-issuer">The Linux Foundation</p>
-                                <p class="certification-date">Obtenida: Octubre 2025</p>
+                                <p class="certification-date">Obtenida: Octubre 2023</p>
                             </div>
                         </div>
                         <div class="certification-description">
                             <p>Introduction to DevSecOps for Managers badge understand DevSecOps principles and recognize basic concepts such as value stream management, platform optimization, and Continuous Delivery.</p>
                         </div>
                         <a href="https://www.credly.com/badges/ac0e3a33-62f1-4d24-bdd4-0e0b1dc7b6f8/linked_in_profile" 
+                           class="btn certification-link"
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i>
+                            Ver Credencial
+                        </a>
+                    </div>
+
+                    <div class="certification-card fade-in">
+                        <div class="certification-header">
+                            <div class="certification-icon">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Talent_Digital_Chile.png/320px-Talent_Digital_Chile.png" alt="Seguridad en Redes de Datos"/>
+                            </div>
+                            <div class="certification-title">
+                                <h3>Seguridad en Redes de Datos</h3>
+                                <p class="certification-issuer">Talento Digital</p>
+                                <p class="certification-date">Obtenida: Julio 2023</p>
+                            </div>
+                        </div>
+                        <div class="certification-description">
+                            <p>Certificación en seguridad de redes que cubre conceptos avanzados de protección de infraestructura de red, detección de intrusiones, firewalls, VPNs y mejores prácticas de seguridad para redes corporativas.</p>
+                        </div>
+                        <a href="#" 
                            class="btn certification-link"
                            target="_blank" 
                            rel="noopener noreferrer">
@@ -1075,7 +1101,7 @@
                     <!-- Proyecto Tiny NOC -->
                     <article class="project-card fade-in">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=874&q=80" alt="Tiny NOC - Network Operations Center">
+                            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Tiny NOC - Raspberry Pi System">
                         </div>
                         <div class="project-content">
                             <p class="project-category">Monitoreo de Red</p>
@@ -1159,7 +1185,7 @@
                     <!-- Proyecto 3 -->
                     <article class="project-card fade-in">
                         <div class="project-image">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=874&q=80" alt="Monitoreo en tiempo real">
+                            <img src="https://images.unsplash.com/photo-1666214280557-f1b5028c7197?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Despliegue de SIEM Wazuh">
                         </div>
                         <div class="project-content">
                             <p class="project-category">SIEM & Monitoreo</p>
